@@ -1,11 +1,14 @@
 const removeFromArray = function(array, ...valuesToRemove) {
-    for (let i = 0; i < array.length; i++) {
-        if (array[i] === valuesToRemove) {
-            pos1 = i;
+    let pos;
+    for (let i = 0; i < valuesToRemove.length; i++) {
+        for (let j = 0; j < array.length; j++) {
+            if (array[j] === valuesToRemove[i]) {
+                pos = j;
+            };
         };
-    };
-    if (pos1) {
-        array.splice(pos1, 1);
+        if (pos >= 0) {
+            array.splice(pos, 1);
+        }
     }
     return array;
 };
@@ -14,7 +17,7 @@ const removeFromArray = function(array, ...valuesToRemove) {
 
 // console.log(removeFromArray(testArray, "Orange"));
 
-console.log(removeFromArray([1, 2, 3, 4], 7, "tacos"));
+console.log(removeFromArray([1, 2, 3, 4], 1, 2, 3));
 
 // Do not edit below this line
 module.exports = removeFromArray;
